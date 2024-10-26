@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1c1c3c, #3c3c6c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .container {
+            display: flex;
+            width: 70%;
+            max-width: 900px;
+            background: #141432;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .form-section {
+            padding: 50px;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .form-section h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .form-section p {
+            margin-bottom: 10px;
+            color: #bbb;
+            text-align: center;
+        }
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="password"],
+        .form-section button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        .form-section button {
+            background: #6a5acd;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .form-section button:hover {
+            background: #5a4abc;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+        .alternate-signup {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .alternate-signup button {
+            background: #3c3c6c;
+            margin-bottom: 0;
+        }
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .login-link a {
+            color: #6a5acd;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .welcome-section {
+            width: 50%;
+            background: linear-gradient(135deg, #2c2c5c, #4c4c7c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        .welcome-section h1,
+        .welcome-section h2 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .welcome-section h2 {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-section">
+            <h1>CREATE</h1>
+            <h2>ACCOUNT</h2>
+        </div>
+        <div class="form-section">
+            <h2>Sign Up</h2>
+            <p>Please Enter Your Details</p>
+            <div class="alternate-signup">
+                <button>Sign Up With Google</button>
+                <button onclick="redirectToFaceVerification()">Sign Up With Face Recognition</button>
+            </div>
+            <p>Or</p>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+            <div class="checkbox-container">
+                <input type="checkbox">
+                <label>Activate Face Recognition for future logins?</label>
+            </div>
+            <button>Sign Up</button>
+            <div class="login-link">
+                <p>Already have an account? <a href="#">Log In</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

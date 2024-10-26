@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1c1c3c, #3c3c6c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .container {
+            display: flex;
+            width: 70%;
+            max-width: 900px;
+            background: #141432;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .login-form {
+            padding: 50px;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .login-form h2 {
+            margin-bottom: 10px;
+        }
+        .login-form p {
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        .login-form input[type="email"],
+        .login-form input[type="password"],
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        .login-form button {
+            background: #6a5acd;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login-form button:hover {
+            background: #5a4abc;
+        }
+        .remember {
+            display: flex;
+            align-items: center;
+            margin: 20px 0; 
+        }
+        .remember input {
+            margin-right: 10px;
+        }
+        .alternate-login {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .alternate-login button {
+            background: #3c3c6c;
+            margin-bottom: 15px; 
+        }
+        .alternate-login button:last-child {
+            margin-bottom: 0; 
+        }
+        .sign-up {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .sign-up a {
+            color: #6a5acd;
+            text-decoration: none;
+        }
+        .sign-up a:hover {
+            text-decoration: underline;
+        }
+        .welcome-section {
+            width: 50%;
+            background: linear-gradient(135deg, #2c2c5c, #4c4c7c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+        }
+        .welcome-section h1 {
+            font-size: 3em;
+        }
+        .welcome-section h2 {
+            font-size: 3em;
+            font-style: italic;
+        }
+    </style>
+    <script>
+        function redirectToFaceVerification() {
+            // Redirect to the face verification page
+            window.location.href = 'http://127.0.0.1:5000'; // Ensure this matches your Flask app URL
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h2><center>Log In</center></h2>
+            <p><center>Please Enter Your Details</center></p>
+            <div class="alternate-login">
+                <button>Log In With Google</button>
+                <button onclick="redirectToFaceVerification()">Log In With Face Recognition</button>
+            </div>
+            <p><center>Or</center></p>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <div class="remember">
+                <input type="checkbox">
+                <label>Remember For 30 days</label>
+            </div>
+            <button>Log In</button>
+            <div class="sign-up">
+                <p>Don’t have account? <a href="#">Sign Up</a></p>
+            </div>
+        </div>
+        <div class="welcome-section">
+            <h1>WELCOME</h1>
+            <h2>BACK</h2>
+        </div>
+    </div>
+</body>
+</html>
+
