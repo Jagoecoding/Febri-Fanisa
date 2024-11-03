@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JagoeCoding - Tantangan Kode</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0F0A2C;
+            /* Warna latar belakang */
+            display: flex;
+            height: 100vh;
+            /* Tinggi penuh viewport */
+            color: #FFFFFF;
+        }
+
+        /* Sidebar Styles */
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #161030;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #FFFFFF;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin: 15px 0;
+        }
+
+        .sidebar li a {
+            text-decoration: none;
+            color: #C2C2C2;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+
+        .sidebar li a img {
+            margin-right: 10px;
+            /* Space between image and text */
+            width: 24px;
+            height: 24px;
+        }
+
+        .sidebar li a:hover {
+            color: #928EFF;
+            /* Warna saat hover */
+        }
+
+        .sidebar .settings {
+            margin-top: 20px;
+            /* Spasi atas untuk bagian settings */
+            border-top: 1px solid #282048;
+            /* Garis pemisah */
+            padding-top: 15px;
+            /* Padding atas pada bagian settings */
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            /* Memenuhi sisa ruang */
+            padding: 30px;
+            /* Padding dalam konten utama */
+        }
+
+        .main-content h2 {
+            font-size: 30px;
+            /* Ukuran font untuk judul tantangan */
+            margin-bottom: 20px;
+            /* Spasi bawah judul */
+        }
+
+        .code-container {
+            display: flex;
+            /* Menggunakan flexbox untuk menyusun item secara horizontal */
+            justify-content: space-between;
+            /* Menyediakan ruang di antara item */
+            margin-top: 20px;
+            /* Spasi di atas container */
+        }
+
+        .code-block {
+            background-color: #333;
+            /* Warna latar belakang untuk blok kode */
+            padding: 20px;
+            /* Padding dalam blok kode */
+            border-radius: 5px;
+            /* Sudut melengkung pada blok kode */
+            margin-right: 10px;
+            /* Spasi antara blok kode (kecuali blok terakhir) */
+            flex: 1;
+            /* Membuat blok kode memiliki ukuran yang sama */
+            display: flex;
+            /* Menjadikan blok kode sebagai flex container */
+            flex-direction: column;
+            /* Menyusun item dalam kolom */
+            align-items: center;
+            /* Memusatkan item secara horizontal */
+        }
+
+        .code-block:last-child {
+            margin-right: 0;
+            /* Menghilangkan margin kanan pada blok kode terakhir */
+        }
+
+        .button {
+            background-color: #f7fdf7;
+            /* Warna latar belakang tombol */
+            color: rgb(10, 10, 10);
+            /* Warna teks tombol */
+            padding: 15px 32px;
+            /* Padding dalam tombol */
+            text-align: center;
+            /* Pusatkan teks dalam tombol */
+            text-decoration: none;
+            /* Menghilangkan underline pada tautan */
+            display: inline-block;
+            /* Menjadikan tombol inline-block */
+            font-size: 16px;
+            /* Ukuran font dalam tombol */
+            margin: 10px 0 0;
+            /* Margin atas untuk spasi antara blok kode dan tombol */
+            cursor: pointer;
+            /* Kursor tangan saat hover */
+            border: none;
+            /* Menghilangkan border */
+            border-radius: 5px;
+            /* Sudut melengkung pada tombol */
+            transition: background-color 0.3s;
+            /* Transisi saat hover */
+        }
+
+        .button:hover {
+            background-color: #5DBE5B;
+            /* Warna saat hover pada tombol */
+        }
+
+        .small-button {
+            background-color: #ede5d8;
+            /* Warna latar belakang tombol kecil */
+            color: rgb(4, 4, 4);
+            /* Warna teks tombol kecil */
+            padding: 10px 20px;
+            /* Padding untuk tombol kecil */
+            text-align: center;
+            /* Pusatkan teks dalam tombol kecil */
+            text-decoration: none;
+            /* Menghilangkan underline pada tautan */
+            display: inline-block;
+            /* Menjadikan tombol kecil inline-block */
+            font-size: 12px;
+            /* Ukuran font untuk tombol kecil */
+            margin-top: 300px;
+            /* Spasi lebih besar di atas tombol kecil */
+            cursor: pointer;
+            /* Kursor tangan saat hover */
+            border: none;
+            /* Menghilangkan border */
+            border-radius: 5px;
+            /* Sudut melengkung pada tombol kecil */
+            transition: background-color 0.3s;
+            /* Transisi saat hover */
+        }
+
+        .small-button:hover {
+            background-color: #FFB74D;
+            /* Warna saat hover pada tombol kecil */
+        }
+
+        .button-container {
+            display: flex;
+            /* Menggunakan flexbox untuk menyusun tombol secara horizontal */
+            justify-content: center;
+            /* Pusatkan tombol */
+            margin-top: 20px;
+            /* Spasi di atas tombol */
+        }
+
+        /* Styles for navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 250px;
+        }
+
+        .nav-button {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-button:hover {
+            background-color: #E0E0E0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div>
+            <h1>JagoeCoding</h1>
+            <ul>
+                <!-- Dashboard with Image -->
+                <li>
+                    <a href="dashboard.html">
+                        <img src="element-icon/dashboard.png" alt="Dashboard Icon"> <!-- Replace with your image URL -->
+                        Dashboard
+                    </a>
+                </li>
+                <!-- Course with Image -->
+                <li>
+                    <a href="course.html">
+                        <img src="element-icon/course.png" alt="Course Icon"> <!-- Replace with your image URL -->
+                        Course
+                    </a>
+                </li>
+                <!-- Leaderboard with Image -->
+                <li>
+                    <a href="leaderboard.html">
+                        <img src="element-icon/leaderboard.png" alt="Leaderboard Icon">
+                        <!-- Replace with your image URL -->
+                        Leaderboard
+                    </a>
+                </li>
+                <!-- Profile with Image -->
+                <li>
+                    <a href="profil.html">
+                        <img src="element-icon/profil.png" alt="Profile Image"> <!-- Replace with your image URL -->
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="settings">
+            <ul>
+                <!-- Settings with Image -->
+                <li>
+                    <a href="settings.html">
+                        <img src="element-icon/setting.png" alt="Settings Icon"> <!-- Replace with your image URL -->
+                        Settings
+                    </a>
+                </li>
+                <!-- Help with Image -->
+                <li>
+                    <a href="help.html">
+                        <img src="element-icon/help.png" alt="Help Icon"> <!-- Replace with your image URL -->
+                        Help
+                    </a>
+                </li>
+                <!-- Log Out with Image -->
+                <li>
+                    <a href="login.html">
+                        <img src="element-icon/logout.png" alt="Log Out Icon"> <!-- Replace with your image URL -->
+                        Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Tantangan: Pilih kode yang benar!</h2>
+        <p>Sekarang, saatnya uji pemahamanmu! Kamu akan melihat beberapa pilihan kode untuk menampilkan namamu. Pilih
+            kode yang paling benar:</p>
+
+        <div class="code-container">
+            <div class="code-block">
+                <pre>
+print(Hallo, "Jagoers!")
+                </pre>
+                <button class="button" onclick="window.location.href='halaman1.html'">Pilih kode ini</button>
+            </div>
+
+            <div class="code-block">
+                <pre>
+print("Hallo, Jagoers!")
+                </pre>
+                <button class="button" onclick="window.location.href='halaman2.html'">Pilih kode ini</button>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="nav-button" id="back-button">
+                <img src="element-icon/back.png" alt="Back">
+            </button>
+            <button class="nav-button" id="next-button">
+                <img src="element-icon/next.png" alt="Next">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Add click event to the Next button to navigate to bagian1.html
+        document.getElementById('back-button').addEventListener('click', function () {
+            window.location.href = 'chalange.html';
+        });
+    </script>
+</body>
+
+</html>

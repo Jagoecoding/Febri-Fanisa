@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JagoeCoding - Settings</title>
+  <style>
+    /* General reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #0F0A2C;
+      display: flex;
+      height: 100vh;
+      color: #FFFFFF;
+    }
+
+    /* Sidebar Styles */
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      background-color: #161030;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidebar h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #FFFFFF;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 15px 0;
+    }
+
+    .sidebar li a {
+      text-decoration: none;
+      color: #C2C2C2;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .sidebar li a img {
+      margin-right: 10px;
+      /* Space between image and text */
+      width: 24px;
+      height: 24px;
+    }
+
+    .sidebar li a:hover {
+      color: #928EFF;
+    }
+
+    .sidebar .settings {
+      margin-top: 20px;
+      border-top: 1px solid #282048;
+      padding-top: 15px;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .main-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .main-content h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .code-block {
+      background-color: #282048;
+      padding: 20px;
+      border-radius: 5px;
+      color: #FFFFFF;
+      /* Set text color to white for contrast */
+      margin: 20px 0;
+      /* Space around code block */
+      overflow: auto;
+      /* Enable scrolling for long content */
+    }
+
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #5B47E0;
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+      /* Space above the button */
+    }
+
+    .button:hover {
+      background-color: #7261F1;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    .modal-content {
+      background-color: #d8d5e5;
+      margin: 15% auto;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+      border-radius: 10px;
+      color: #0c0c0c;
+      text-align: center;
+    }
+
+    .modal-emoji {
+      display: block;
+      /* Center the image */
+      margin: 0 auto;
+      /* Center horizontally */
+      width: 100px;
+      /* Set width of the image */
+      height: 100px;
+      /* Set height of the image */
+      border-radius: 50%;
+      /* Make the image round */
+      margin-top: 10px;
+      /* Space above the image */
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100px;
+      /* Maximum width for images */
+      margin-top: 10px;
+      /* Space above images */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <h1>JagoeCoding</h1>
+      <ul>
+        <!-- Dashboard with Image -->
+        <li>
+          <a href="dashboard.html">
+            <img src="element-icon/dashboard.png" alt="Dashboard Icon"> <!-- Replace with your image URL -->
+            Dashboard
+          </a>
+        </li>
+        <!-- Course with Image -->
+        <li>
+          <a href="course.html">
+            <img src="element-icon/course.png" alt="Course Icon"> <!-- Replace with your image URL -->
+            Course
+          </a>
+        </li>
+        <!-- Leaderboard with Image -->
+        <li>
+          <a href="leaderboard.html">
+            <img src="element-icon/leaderboard.png" alt="Leaderboard Icon"> <!-- Replace with your image URL -->
+            Leaderboard
+          </a>
+        </li>
+        <!-- Profile with Image -->
+        <li>
+          <a href="profil.html">
+            <img src="element-icon/profil.png" alt="Profile Image"> <!-- Replace with your image URL -->
+            Profile
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="settings">
+      <ul>
+        <!-- Settings with Image -->
+        <li>
+          <a href="settings.html">
+            <img src="element-icon/setting.png" alt="Settings Icon"> <!-- Replace with your image URL -->
+            Settings
+          </a>
+        </li>
+        <!-- Help with Image -->
+        <li>
+          <a href="help.html">
+            <img src="element-icon/help.png" alt="Help Icon"> <!-- Replace with your image URL -->
+            Help
+          </a>
+        </li>
+        <!-- Log Out with Image -->
+        <li>
+          <a href="login.html">
+            <img src="element-icon/logout.png" alt="Log Out Icon"> <!-- Replace with your image URL -->
+            Log Out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>JagoCoding</h1>
+    <h2>Tantangan: Pilih kode yang benar!</h2>
+    <p>Sekarang, saatnya uji pemahamanmu! Kamu akan melihat beberapa pilihan kode untuk menampilkan namamu. Pilih kode
+      yang paling benar:</p>
+
+    <div class="code-block">
+      <pre>print(H</pre>
+    </div>
+
+    <button class="button">Coba Lagi</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Ops, coba lagi ya! Perhatikan tanda kutipnya.</p>
+        <img src="image/sad.png" alt="Sad emoji" class="modal-emoji">
+        <div class="button-group">
+          <button class="button">Kembali</button>
+          <button class="button">Coba Lagi</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.querySelector(".button");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+  </div>
+</body>
+
+</html>
