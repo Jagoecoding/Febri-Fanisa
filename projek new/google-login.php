@@ -1,15 +1,49 @@
 <?php
-require 'koneksi.php';
-$email = $_POST["email"];
-$password = $_POST["password"];
+// Connect to your database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "Users";
 
-$query_sql = "SELECT FROM users WHERE email = '$email' AND password = '$password'";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-$result = mysqli_query($conn, $query_sql);
-
-if (mysqli_num_rows($result) > 0) {
-    header("Location: dashboard.html");
-} else {
-    echo "<center><h1>Email atau Password Anda Salah. Silahkan Coba Login Kembali.</h1>
-            <button><strong><a href='login.html'>Login</a></strong></button></center>";
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Prepare and bind
+    $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        // Email found, verify password
+        $stmt->bind_result($hashed_password);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashed_password)) {
+            // Password matches, login success
+            // Redirect to dashboard
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            // Password doesn't match
+            echo "Invalid password.";
+        }
+    } else {
+        // Email not found
+        echo "No account found with that email.";
+    }
+
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+}
+?>
