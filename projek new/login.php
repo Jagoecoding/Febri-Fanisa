@@ -1,3 +1,55 @@
+<?php
+// Connect to the database
+$servername = "localhost";
+$username = "root"; // your database username
+$password = ""; // your database password
+$dbname = "jagocoding"; // your database name
+
+$conn = new mysqli($servername, $username, $password, $dbname, 3306);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if the form was submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the email and password from the form
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Prepare and execute the query to check if the email exists
+    $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    // Check if email exists
+    if ($stmt->num_rows > 0) {
+        // Bind the result
+        $stmt->bind_result($hashed_password);
+        $stmt->fetch();
+
+        // Verify the password
+        if (password_verify($password, $hashed_password)) {
+            // Password is correct, redirect to the dashboard
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            // Password is incorrect
+            echo "Invalid password.";
+        }
+    } else {
+        // Email not found
+        echo "No account found with that email.";
+    }
+
+    // Close the statement and connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -187,7 +239,7 @@
 
             <p>Or</p>
 
-            <form action="dashboard.php" method="post" onsubmit="event.preventDefault(); this.submit();">
+            <form action="login.php" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -202,6 +254,7 @@
                 </div>
                 <button type="submit">Log In</button>
             </form>
+
             <div class="login-link">
                 Don’t have an account? <a href="register.php">Sign Up</a>
             </div>
